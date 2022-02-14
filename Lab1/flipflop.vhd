@@ -18,6 +18,7 @@ begin
 				if EN = '1' then
 					Q <= D;
 				end if;
+			end if;
 		end if;
 	end process;
 end imp;
