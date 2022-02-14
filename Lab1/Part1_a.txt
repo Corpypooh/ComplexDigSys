@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 entity Lab1Part1 is
 port(
 	------------ KEY ------------
-	KEY             	:in    	std_logic_vector(1 downto 0);
+	KEY             	:in    	std_logic_vector(0);
 
 	------------ SW ------------
 	SW              	:in    	std_logic_vector(1 downto 0);
