@@ -22,6 +22,7 @@ architecture fsm of Lab1Part1 is
 	end component;
 	
 	signal w 	 : std_logic;
+	signal z		 : std_logic;
 	signal D_in  : std_logic(8 downto 0);
 	signal Q_out : std_logic(8 downto 0);
 begin
@@ -68,5 +69,6 @@ begin
 	
 	--Outputs to hardware
 	LEDR(8 downto 0) <= Q_out(8 downto 0);
-	LEDR(9) <= (Q_out(4) OR Q_out(8));
+	z <= (Q_out(4) OR Q_out(8));
+	LEDR(9) <= z;
 end fsm;
