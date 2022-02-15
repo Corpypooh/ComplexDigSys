@@ -1,0 +1,25 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity Lab1Part1_tb is
+end Lab1Part1_tb;
+
+architecture tb of Lab1Part1_tb is
+	signal clk, w, rst	: std_logic := '0';
+	signal z : std_logic;
+	signal y : std_logic_vector(8 downto 0);
+	signal bunk : std_logic;
+begin
+	clk <= not clk after 50 ms;
+
+	process
+	begin
+	w <= '1';
+	wait for 500 ms;
+	w <= '0';
+	wait for 500 ms;
+	end process;
+	
+	UUT : entity work.Lab1Part1 port map (KEY(0) => clk, KEY(1) => bunk, SW(1) => w, SW(0) => rst, LEDR(8 downto 0) => y(8 downto 0), LEDR(9) => z);
+	
+end tb;

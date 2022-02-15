@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 entity Lab1Part1 is
 port(
 	------------ KEY ------------
-	KEY             	:in    	std_logic_vector(0);
+	KEY             	:in    	std_logic_vector(1 downto 0);
 
 	------------ SW ------------
 	SW              	:in    	std_logic_vector(1 downto 0);
@@ -17,16 +17,16 @@ end Lab1Part1;
 architecture fsm of Lab1Part1 is
 	component flipflop
 	port (
-		D, clk, en, rst		: in	std_logic;
+		D, clk, rst, en		: in	std_logic;
 		q							: out std_logic);
 	end component;
 	
 	signal clk	 : std_logic;
-	signal rst	 : std_logic;
+	signal rst	 : std_logic	:= '1';
 	signal w 	 : std_logic;
 	signal z		 : std_logic;
-	signal D_in  : std_logic_vector(8 downto 0);
-	signal Q_out : std_logic_vector(8 downto 0);
+	signal D_in  : std_logic_vector(8 downto 0) := '000000000';
+	signal Q_out : std_logic_vector(8 downto 0) := '000000000';
 begin
 	--Tie hardware inputs to software signals
 	clk 	<= KEY(0);
@@ -34,8 +34,8 @@ begin
 	w		<= SW(1);
 	
 	--State A, 0
-	D_in(0) <= rst;
-	S0: flipflop PORT MAP (D_in(0), clk, rst, '1', Q_out(0));
+	D_in(0) <= '0';
+	S0: flipflop PORT MAP (D_in(0), clk, '1', rst, Q_out(0));
 	
 	--State B, 1
 	D_in(1) <= (Q_out(0) OR Q_out(5) OR Q_out(6) OR Q_out(7) OR Q_out(8)) AND NOT (w);
