@@ -1,0 +1,33 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity SevenSeg_tb is
+end SevenSeg_tb;
+
+architecture tb of SevenSeg_tb is
+	signal input	:	std_logic_vector(3 downto 0) := "0000";
+	signal output	:	std_logic_vector(6 downto 0);
+begin
+
+	process
+	begin
+		input <= "0001";
+		wait for 1 ns;
+		input <= "0010";
+		wait for 1 ns;
+		input <= "1000";
+		wait for 1 ns;
+		input <= "0111";
+		wait for 1 ns;
+		input <= "0001";
+		wait for 1 ns;
+		input <= "0100";
+		wait for 1 ns;
+		input <= "1001";
+		wait for 1 ns;
+		input <= "0000";
+		wait for 1 ns;
+	end process;
+
+	UUT : entity work.SevenSeg port map (B => input, O => output);
+end tb;
