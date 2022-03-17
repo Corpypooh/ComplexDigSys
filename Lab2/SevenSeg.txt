@@ -10,17 +10,17 @@ end SevenSeg;
 architecture rtl of SevenSeg is
 begin
 	--Seg A
-	O(0) <= (NOT B(2) AND NOT B(0)) OR B(1) OR (B(2) AND B(0)) OR B(3);
+	O(0) <= NOT ((NOT B(2) AND NOT B(0)) OR B(1) OR (B(2) AND B(0)) OR B(3));
 	--Seg B
-	O(1) <= (NOT B(2)) OR (NOT B(1) AND NOT B(0)) OR (B(1) AND B(0));
+	O(1) <= NOT ((NOT B(2)) OR (NOT B(1) AND NOT B(0)) OR (B(1) AND B(0)));
 	--Seg C
-	O(2) <= NOT B(1) OR B(0) OR B(2);
+	O(2) <= NOT (NOT B(1) OR B(0) OR B(2));
 	--Seg D
-	O(3) <= (NOT B(2) AND NOT B(0)) OR (NOT B(2) AND B(1)) OR (B(2) AND NOT B(1) AND B(0)) OR (B(1) AND NOT B(0)) OR B(3);
+	O(3) <= NOT ((NOT B(2) AND NOT B(0)) OR (NOT B(2) AND B(1)) OR (B(2) AND NOT B(1) AND B(0)) OR (B(1) AND NOT B(0)) OR B(3));
 	--Seg E
-	O(4) <= (NOT B(2) AND NOT B(0)) OR (B(1) AND NOT B(0));
+	O(4) <= NOT ((NOT B(2) AND NOT B(0)) OR (B(1) AND NOT B(0)));
 	--Seg F
-	O(5) <= (NOT B(1) AND NOT B(0)) OR (B(2) AND NOT B(1)) OR (B(2) AND NOT B(0)) OR B(3);
+	O(5) <= NOT ((NOT B(1) AND NOT B(0)) OR (B(2) AND NOT B(1)) OR (B(2) AND NOT B(0)) OR B(3));
 	--Seg G
-	O(6) <= 	(NOT B(2) AND B(1)) OR (B(2) AND NOT B(1)) OR B(3) OR (B(2) AND NOT B(0));
+	O(6) <= NOT ((NOT B(2) AND B(1)) OR (B(2) AND NOT B(1)) OR B(3) OR (B(2) AND NOT B(0)));
 end rtl;
